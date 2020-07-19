@@ -13,8 +13,35 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.get("/", async (req, res, next) => {
+  const calendar = await CalendarDAO.getAll();
+  if (calendar) {
+    res.json(calendar);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   const calendar = await CalendarDAO.getById(req.params.id);
+  if (calendar) {
+    res.json(calendar);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+router.put("/:id", async (req, res, next) => {
+  const calendar = await CalendarDAO.updateName(req.params.id,req.body);
+  if (calendar) {
+    res.json(calendar);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  const calendar = await CalendarDAO.delete(req.params.id);
   if (calendar) {
     res.json(calendar);
   } else {

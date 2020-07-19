@@ -14,3 +14,30 @@ module.exports.getById = async (id) => {
     return null;
   }
 };
+
+module.exports.getAll = async () => {
+  try {
+    const calendar = await Calendars.find().lean();
+    return calendar;
+  } catch (e) {
+    return null;
+  }
+};
+
+module.exports.updateName = async (id,reqbody) => {
+  try {
+    const calendar = await Calendars.update({ _id: id},{$set:reqbody})
+    return calendar;
+  } catch (e) {
+    return null;
+  }
+};
+
+module.exports.delete = async (id) => {
+  try {
+    const calendar = await Calendars.deleteOne({ _id: id })
+    return calendar;
+  } catch (e) {
+    return null;
+  }
+};
