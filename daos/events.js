@@ -2,8 +2,8 @@ const Events = require('../models/events');
 
 module.exports = {};
   
-module.exports.create = async (entry) => {
-  return await Events.create({ entry });
+module.exports.create = async (name,date) => {
+  return await Events.create({ name,date });
 };
 
 module.exports.getById = async (id) => {

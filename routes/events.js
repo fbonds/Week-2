@@ -4,11 +4,12 @@ const router = Router();
 const EventDAO = require('../daos/events');
 
 router.post("/", async (req, res, next) => {
-  const { entry } = req.body;
-  if (!entry) {
+  const { name, date } = req.body;
+  console.log(name, date)
+  if (!name) {
     res.status(400).send('body parameter "entry" is required"');
   } else {
-    const event = await EventDAO.create(entry);
+    const event = await EventDAO.create(name,date);
     res.json(event);
   }
 });

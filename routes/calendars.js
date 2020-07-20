@@ -5,6 +5,7 @@ const CalendarDAO = require('../daos/calendars');
 
 router.post("/", async (req, res, next) => {
   const { name } = req.body;
+  console.log(name);
   if (!name) {
     res.status(400).send('body parameter "name" is required"');
   } else {

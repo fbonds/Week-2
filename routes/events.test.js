@@ -38,7 +38,7 @@ describe("/events", () => {
       expect(res.statusCode).toEqual(200);    
       const storedEvent = res.body;
       expect(storedEvent).toMatchObject({ 
-        name: 'event1', date: mydate, 
+        name: 'event1', date: mydate.toISOString(), 
         _id: event1._id 
       });
     });
@@ -48,7 +48,7 @@ describe("/events", () => {
       expect(res.statusCode).toEqual(200);    
       const storedEvent = res.body;
       expect(storedEvent).toMatchObject({ 
-        name: 'event2', date: mydate, 
+        name: 'event2', date: mydate.toISOString(), 
         _id: event2._id 
       });
     });
@@ -59,7 +59,7 @@ describe("/events", () => {
     const mydate = new Date();
 
     beforeEach(async () => {
-      event1 = (await request(server).post("/events").send({  })).body;
+      event1 = (await request(server).post("/events").send({ name: 'event1', date: mydate })).body;
       event2 = (await request(server).post("/events").send({ name: 'event2', date: mydate })).body;
     });
 
