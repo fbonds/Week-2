@@ -39,6 +39,8 @@ We are building a simple calendar API. There are two entities we are creating CR
   * DELETE /calendars/:id - deletes a calendar with the provided id
   * GET /calendars - returns an array of all calendars
 * Events
+
+
   * GET /calendars/:id/events/:id - returns event with provided id from specified calendar 
   * POST /calendars/:id/events - creates an event for the specified calendar using JSON from the request body
   * PUT /calendars/:id/events/:id - updates event with provided id from specified calendar to have data from request body
